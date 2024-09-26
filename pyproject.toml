@@ -5,9 +5,15 @@ description = "Вычислитель отличий"
 authors = ["Shaydullin Ilfat <sweden.fan@Yandex.ru>"]
 readme = "README.md"
 
+packages = [
+  { include = "gendiff" },
+]
+
 [tool.poetry.dependencies]
 python = "^3.12"
 
+[tool.poetry.scripts]
+gendiff = "gendiff.scripts.main:main"
 
 [build-system]
 requires = ["poetry-core"]
