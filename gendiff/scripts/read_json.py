@@ -24,13 +24,20 @@ def open_json():
             if value != data_file_two[key]:
                 result[f'- {key}'] = value
                 result[f'+ {key}'] = data_file_two[key]
+            else:
+                result[key] = value
+        else:
+            result[f'- {key}'] = value
+        
+    for key, value in data_file_two.items():
+        if key not in data_file_one:
+            result[f'+ {key}'] = value
 
-
-            
-    
+           
+    sorted_result = dict(sorted(result.items(), key=lambda item: item[0].lstrip('+- ')))
     print(f'{data_file_one}\n{data_file_two}\n')
     
-    return result
+    return sorted_result
 
 
 
