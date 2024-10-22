@@ -26,7 +26,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          poetry run coverage run --source=python-project-50 -m pytest  # Замените на папку вашего проекта
+          poetry run coverage run --source=gendiff -m pytest
 
       - name: Generate coverage report
         run: |
