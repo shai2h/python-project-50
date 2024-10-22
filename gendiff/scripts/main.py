@@ -7,7 +7,7 @@ def main():
         description="Compares two configuration files and shows a difference."
     )
     parser.add_argument(
-        'first_file', 
+        'first_file',
         help='Path to the first configuration file'
     )
     parser.add_argument(
