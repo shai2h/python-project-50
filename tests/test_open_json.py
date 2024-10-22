@@ -12,4 +12,3 @@ def test_open_file_json():
     }
 
     assert loaded_data == test_path_data
-
