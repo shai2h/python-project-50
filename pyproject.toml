@@ -18,6 +18,7 @@ read_json = "gendiff.scripts.read_json:gendiff_json_file"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.1"
+coverage = "^7.6.4"
 
 
 [tool.poetry.group.test.dependencies]
