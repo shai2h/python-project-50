@@ -1,4 +1,4 @@
-name: Python CI
+name: hexlet 2-nd project
 
 on:
   - push
@@ -7,29 +7,42 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        # we want to test our package on several versions of Python
-        python-version: [3.8, 3.9]
+
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python ${{ matrix.python-version }}
+
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
-        # make depends on poetry
-      - name: Install dependencies
+          python-version: '3.x'
+
+      - name: Install Poetry
         run: |
-          pip install poetry
-          make install
-      - name: Run linter and pytest
+          curl -sSL https://install.python-poetry.org | python3 -
+
+      - name: Install dependencies with Poetry
         run: |
-          make check
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v5.0.0
-        if: github.ref_name == 'main'
+          poetry install
+
+      - name: Run tests with coverage
+        run: |
+          poetry run coverage run --source=your_project_folder -m pytest  # Замените на папку вашего проекта
+
+      - name: Generate coverage report
+        run: |
+          poetry run coverage xml -o coverage.xml
+
+      - name: CodeClimate Test Reporter Download
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+
+      - name: CodeClimate Test Reporter Before Build
+        run: ./cc-test-reporter before-build
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: make test-coverage
-          debug: true
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+
+      - name: Publish code coverage
+        run: ./cc-test-reporter after-build --exit-code $?
+        env:
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
