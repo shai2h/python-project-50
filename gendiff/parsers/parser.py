@@ -1,8 +1,5 @@
 import json
 import yaml
-
-def isJsonOrYaml(path_to_file):
-    pass
     
 
 def open_file(path_to_file):
@@ -13,7 +10,6 @@ def open_file(path_to_file):
     elif path_to_file.endswith('.yml') or path_to_file.endswith('.yaml'):
         with open(path_to_file) as file_yaml:
             return yaml.safe_load(file_yaml)
-    
+
     else:
         raise ValueError('Неверный формат файла')
-

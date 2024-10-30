@@ -1,22 +1,18 @@
-from gendiff.utils import open_file
+from gendiff.parsers import parser
+from gendiff.formatters import stylish
+from gendiff.diff_builder import builder
 
 
-def gendiff_json_file(file_one, file_two):
-    result = {}
-    data_file_one, data_file_two = open_file(file_one), open_file(file_two)
+def generate_diff(file1, file2, format='stylish'):
+    data1 = parser.open_file(file1)
+    data2 = parser.open_file(file2)
+    diff = builder.build_diff(data1, data2)
 
-    for key, value in data_file_one.items():
-        if key in data_file_two:
-            if value != data_file_two[key]:
-                result[f'- {key}'] = value
-                result[f'+ {key}'] = data_file_two[key]
-            else:
-                result[key] = value
-        else:
-            result[f'- {key}'] = value
+    if format == 'stylish':
+        return stylish.stylish(diff)
+    else:
+        raise ValueError(f'Неверный формат {format}')
 
-    for key, value in data_file_two.items():
-        if key not in data_file_one:
-            result[f'+ {key}'] = value
 
-    return dict(sorted(result.items(), key=lambda item: item[0].lstrip('+- ')))
+if __name__ == '__main__':
+    print(generate_diff)
