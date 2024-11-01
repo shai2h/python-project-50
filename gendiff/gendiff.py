@@ -1,7 +1,7 @@
 from gendiff.parsers import parser
 from gendiff.formatters import stylish
 from gendiff.diff_builder import builder
-
+from gendiff.formatters import plain
 
 def generate_diff(file1, file2, format='stylish'):
     data1 = parser.open_file(file1)
@@ -10,6 +10,8 @@ def generate_diff(file1, file2, format='stylish'):
 
     if format == 'stylish':
         return stylish.stylish(diff)
+    elif format == 'plain':
+        return plain.plain(diff)
     else:
         raise ValueError(f'Неверный формат {format}')
 
