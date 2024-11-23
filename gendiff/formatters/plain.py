@@ -1,4 +1,4 @@
-def plain(diff, path=""):
+def inner(diff, path=""):
     lines = []
 
     for key, value in sorted(diff.items()):
@@ -14,9 +14,11 @@ def plain(diff, path=""):
             new_value = format_value(value["new"])
             lines.append(f"Property '{full_path}' was updated. From {old_value} to {new_value}")
         elif status == "nested":
-            lines.extend(plain(value["children"], full_path))
+            lines.extend(inner(value["children"], full_path))
+    return lines
 
-    return "\n".join(lines)
+def plain(diff):
+    return '\n'.join(inner(diff))
 
 def format_value(value):
     if isinstance(value, dict):
