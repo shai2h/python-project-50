@@ -2,6 +2,7 @@ from gendiff.parsers import parser
 from gendiff.formatters import stylish
 from gendiff.diff_builder import builder
 from gendiff.formatters import plain
+from gendiff.formatters import json
 
 def generate_diff(file1, file2, output_format='stylish'):
     data1 = parser.open_file(file1)
@@ -12,6 +13,8 @@ def generate_diff(file1, file2, output_format='stylish'):
         return stylish.stylish(diff)
     elif output_format == 'plain':
         return plain.plain(diff)
+    elif output_format == 'json':
+        return json.json_format(diff)
     else:
         raise ValueError(f'Неверный формат {output_format}')
 
