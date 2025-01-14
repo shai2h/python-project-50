@@ -6,7 +6,9 @@ def inner(diff, path=""):
         status = value['status']
 
         if status == 'added':
-            lines.append(f"Property '{full_path}' was added with value: {format_value(value['value'])}")
+            lines.append(
+                f"Property '{full_path}' was added with value: {format_value(value['value'])}"
+            )
         elif status == "removed":
             lines.append(f"Property '{full_path}' was removed")
         elif status == "changed":
