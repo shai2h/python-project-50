@@ -1,7 +1,6 @@
 from gendiff.parsers import parser
 
 
-
 def test_open_file_json():
     """
         Тест открытия json
