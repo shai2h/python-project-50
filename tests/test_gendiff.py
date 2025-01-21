@@ -1,62 +1,21 @@
 from gendiff.gendiff import generate_diff
 
 
-
 def test_generate_diff_stylish():
-    file1 = "./gendiff/data/file1.json"
-    file2 = "./gendiff/data/file2.json"
+    file1 = "gendiff/data/file1.json"
+    file2 = "gendiff/data/file2.json"
+    expected_output_file = "tests/fixtures/expected_stylish.txt"
 
-    # Ожидаемый результат
-    expected_result = """{
-    common: {
-      + follow: false
-        setting1: Value 1
-      - setting2: 200
-      - setting3: true
-      + setting3: None
-      + setting4: blah blah
-      + setting5: {
-              key5: value5
-        }
-        setting6: {
-            doge: {
-              - wow:
-              + wow: so much
-            }
-            key: value
-          + ops: vops
-        }
-    }
-    group1: {
-      - baz: bas
-      + baz: bars
-        foo: bar
-      - nest: {
-              key: value
-        }
-      + nest: str
-    }
-  - group2: {
-          abc: 12345
-          deep: {
-              id: 45
-        }
-    }
-  + group3: {
-          deep: {
-              id: {
-                  number: 45
-            }
-        }
-          fee: 100500
-    }
-}"""
+    with open(expected_output_file, 'r', encoding='utf-8') as f:
+        expected = f.read().strip()
 
-    # Получаем реальный результат
-    result = generate_diff(file1, file2, "stylish").strip()
+    result = generate_diff(file1, file2, "stylish")
 
-    # Сравниваем результат с ожидаемым
-    assert result == expected_result.strip()
+    print("Результат функции:")
+    print(result)
+    print("Ожидаемый результат:")
+    print(expected)
+    assert result == expected
 
 
 def test_generate_diff_plain():
