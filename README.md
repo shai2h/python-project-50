@@ -36,7 +36,12 @@
 [![asciicast](https://asciinema.org/a/HgXxSHv03OOTQv8FtybmZdeRT.svg)](https://asciinema.org/a/HgXxSHv03OOTQv8FtybmZdeRT)
 2. **Пример использования:**
    ```bash
-   poetry run gendiff file1.json file2.yaml
+   poetry run gendiff gendiff/data/file1.json gendiff/data/file2.json
+   ```bash
+   poetry run gendiff -f plain gendiff/data/file1.yml gendiff/data/file2.json
+[![asciicast](https://asciinema.org/a/8xMMfzjpBcVC6HSMpI4vLJihX.svg)](https://asciinema.org/a/8xMMfzjpBcVC6HSMpI4vLJihX)
+[![asciicast](https://asciinema.org/a/8xMMfzjpBcVC6HSMpI4vLJihX.svg)](https://asciinema.org/a/8xMMfzjpBcVC6HSMpI4vLJihX)
+
 
 
 
