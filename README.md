@@ -33,7 +33,7 @@
 1. **Для получения справки о командах используйте следующую команду:**
    ```bash
    poetry run gendiff -h
-   [![asciicast](https://asciinema.org/a/HgXxSHv03OOTQv8FtybmZdeRT.svg)](https://asciinema.org/a/HgXxSHv03OOTQv8FtybmZdeRT)
+[![asciicast](https://asciinema.org/a/HgXxSHv03OOTQv8FtybmZdeRT.svg)](https://asciinema.org/a/HgXxSHv03OOTQv8FtybmZdeRT)
 2. **Пример использования:**
    ```bash
    poetry run gendiff file1.json file2.yaml
