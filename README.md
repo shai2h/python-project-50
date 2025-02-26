@@ -17,22 +17,27 @@
 ## Зависимости
 
 1. **Клонирование репозитория**
-```git clone git@github.com:shai2h/python-project-50.git```
+    ```bash
+    git clone git@github.com:shai2h/python-project-50.git
 
 2. **Виртуальное окружение**
-```poetry shell```
+    ```bash
+    poetry shell
 
 3. **Установка зависимостей**
-```poetry install```
-
+    ```bash
+    poetry install
 
 
 ## Использование
 1. **Для получения справки о командах используйте следующую команду:**
    ```bash
    poetry run gendiff -h
+   [![asciicast](https://asciinema.org/a/HgXxSHv03OOTQv8FtybmZdeRT.svg)](https://asciinema.org/a/HgXxSHv03OOTQv8FtybmZdeRT)
 2. **Пример использования:**
    ```bash
    poetry run gendiff file1.json file2.yaml
+
+
 
 
